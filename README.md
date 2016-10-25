@@ -7,12 +7,22 @@
 <b>用法</b></br>
 #pragma mark -- 界面出现、消失，创建、恢复、暂停动画
 ```Objective-c
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    CCPaomaView *ccView = [CCPaomaView shareManager];
+    [_defaults setObject:@"1" forKey:@"isBack"];
+    [ccView pauseAnimation];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    CCPaomaView *pView = [CCPaomaView shareManager];
+    [pView resumeAnimation];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
         [_paomaView showPaomaView:self.view];
         [_paomaView resumeAnimation];
 }
-```
-```Objective-c
+
 - (void)viewWillDisappear:(BOOL)animated {
         [_paomaView pauseAniamtion];
 }
