@@ -20,7 +20,7 @@
 //开始跑
 - (void)showPaomaView:(UIView *)view;
 //暂停动画
-- (void)pauseAniamtion;
+- (void)pauseAnimation;
 //恢复动画
 -(void)resumeAnimation;
 

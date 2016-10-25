@@ -65,7 +65,7 @@
 }
 
 #pragma mark -- 暂停动画
-- (void)pauseAniamtion {
+- (void)pauseAnimation {
     CFTimeInterval pausedTime = [_paomaLabel.layer convertTime:CACurrentMediaTime() fromLayer:nil];
     _paomaLabel.layer.speed = 0.0;
     _paomaLabel.layer.timeOffset = pausedTime;
@@ -119,7 +119,6 @@
             }
             NSLog(@"%@",self.array);
         }
-
     }
 }
 #pragma mark -- 跑马灯

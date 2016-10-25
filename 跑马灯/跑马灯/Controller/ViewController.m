@@ -54,7 +54,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [_paomaView pauseAniamtion];
+    [_paomaView pauseAnimation];
 }
 
 #pragma mark -- getter
