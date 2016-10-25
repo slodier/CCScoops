@@ -10,7 +10,6 @@
 2.进入后台暂停播放，回到前台继续播放</br>
 <hr width=70% size=3 color=bule alingn=center  /></br>
 <b>用法</b></br>
-#pragma mark -- 界面出现、消失，创建、恢复、暂停动画
 ```Objective-c
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     CCPaomaView *ccView = [CCPaomaView shareManager];
