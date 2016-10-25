@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIImageView *maskView; //跑马灯底图
 @property (nonatomic, strong) UILabel *paomaLabel; //跑马的label
 @property (nonatomic, strong) CABasicAnimation *pmAniamtion; //跑马的动画实例
+@property (nonatomic, strong) NSUserDefaults *defaults;
 
 @end
 
@@ -79,40 +80,53 @@
     _paomaLabel.layer.beginTime = 0.0;
     CFTimeInterval timeSincePause = [_paomaLabel.layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
     _paomaLabel.layer.beginTime = timeSincePause;
+    
+    //是否进入后台
+    _defaults = [NSUserDefaults standardUserDefaults];
+    NSString *backStr = [_defaults objectForKey:@"isBack"];
+    if ([backStr intValue] == 1) {
+        [_paomaLabel.layer addAnimation:_pmAniamtion forKey:@"paoMaDeng"];
+    }
 }
 
 #pragma mark -- 代理监听动画停止
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     NSLog(@"%@",[self.paomaLabel.layer animationForKey:@"paoMaDeng"]);
-    if ([self.paomaLabel.layer animationForKey:@"paoMaDeng"] == anim) {
-        //移除第一组数据
-        [_array removeObjectAtIndex:0];
-        
-        //移除整个 plist
-        [CCPaomaModel removePaomaPlist];
-        
-        //重新写入
-        [_array writeToFile:[CCPaomaModel filename] atomically:YES];
-        
-        //动画停止之后，将实例置为 nil
-        _pmAniamtion = nil;
-        
-        //数组为空之后移除跑马灯
-        if (_array.count > 0) {
-            [self showPaomaView:self.superview];
-        }else{
-            self.hidden = YES;
-            [self removeFromSuperview];
+    //记录运行的动画的时间
+    _pmAniamtion.timeOffset = anim.timeOffset;
+    //如果回到前台
+    NSString *backStr = [_defaults objectForKey:@"isBack"];
+    if ([backStr intValue] == 0) {
+        if ([self.paomaLabel.layer animationForKey:@"paoMaDeng"] == anim) {
+            //移除第一组数据
+            [_array removeObjectAtIndex:0];
+            
+            //移除整个 plist
+            [CCPaomaModel removePaomaPlist];
+            
+            //重新写入
+            [_array writeToFile:[CCPaomaModel filename] atomically:YES];
+            
+            //动画停止之后，将实例置为 nil
+            _pmAniamtion = nil;
+            
+            //数组为空之后移除跑马灯
+            if (_array.count > 0) {
+                [self showPaomaView:self.superview];
+            }else{
+                self.hidden = YES;
+                [self removeFromSuperview];
+            }
+            NSLog(@"%@",self.array);
         }
-        NSLog(@"%@",self.array);
+
     }
 }
-
 #pragma mark -- 跑马灯
 - (void)showPaomaView:(UIView *)view {
     //用字典接收 plist 的数据
     NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
-    //把字典放到
+    //转为数组
     _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
     
     if (_array.count > 0) {
