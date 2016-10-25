@@ -9,7 +9,7 @@
 1.切换界面继续播放</br>
 2.进入后台暂停播放，回到前台继续播放</br>
 <hr width=70% size=3 color=bule alingn=center  /></br>
-<b>用法</b></br>
+<h2>用法</h2></br>
 ```Objective-c
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     CCPaomaView *ccView = [CCPaomaView shareManager];
