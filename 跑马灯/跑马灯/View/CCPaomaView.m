@@ -86,6 +86,7 @@
     NSString *backStr = [_defaults objectForKey:@"isBack"];
     if ([backStr intValue] == 1) {
         [_paomaLabel.layer addAnimation:_pmAniamtion forKey:@"paoMaDeng"];
+        [_defaults setObject:@"0" forKey:@"isBack"];
     }
 }
 
