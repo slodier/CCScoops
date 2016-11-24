@@ -10,6 +10,17 @@
 1.切换界面继续播放</br>
 2.进入后台暂停播放，回到前台继续播放</br>
 <h2>How to use?</h2>
+<h3>添加数据</h3>
+```Objective-c
+    NSDictionary *dict = @{@"username":@"金三胖",
+                           @"count":@"3",
+                           @"goodName":@"日韩.avi"};
+    [dict writeToFile:[CCPaomaModel filename] atomically:YES];
+    if (self.paomaView.hidden == YES) {
+        [_paomaView showPaomaView:self.view];
+    }
+```
+<h3>切换界面、前后台操作</h3>
 ```Objective-c
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     CCPaomaView *ccView = [CCPaomaView shareManager];
