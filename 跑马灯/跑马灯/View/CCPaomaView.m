@@ -48,7 +48,6 @@
 
 #pragma mark 构建 UI
 - (void)layoutUI {
-    
     CGFloat x = KScreenWidth / 667;
     
     _maskView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 35)];
@@ -99,8 +98,12 @@
     NSString *backStr = [_defaults objectForKey:@"isBack"];
     if ([backStr intValue] == 0) {
         if ([self.paomaLabel.layer animationForKey:@"paoMaDeng"] == anim) {
-            //移除第一组数据
-            [_array removeObjectAtIndex:0];
+            NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
+            _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
+            [CCPaomaModel removePaomaPlist];
+            [_array writeToFile:[CCPaomaModel filename] atomically:YES];
+            //动画停止之后，将实例置为 nil
+            _pmAniamtion = nil;
             
             //移除整个 plist
             [CCPaomaModel removePaomaPlist];
@@ -124,10 +127,14 @@
 }
 #pragma mark -- 跑马灯
 - (void)showPaomaView:(UIView *)view {
-    //用字典接收 plist 的数据
-    NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
-    //转为数组
-    _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
+
+    //判断是否处于隐藏状态
+    if (self.hidden == YES) {
+        //用字典接收 plist 的数据
+        NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
+        //转为数组
+        _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
+    }
     
     if (_array.count > 0) {
         //名字
