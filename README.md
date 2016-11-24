@@ -6,12 +6,10 @@
 4.判断动画实例是否为空，使得切换界面，跑马灯继续，而不是重新开始</br>
 5.切换界面，暂停、恢复动画</br>
 6.回到前台重新添加动画，因为动画已经改变</br>
-<hr width=90% size=3 color=bule alingn=left  /></br>
-<h2>功能</h2></br>
+<h2>功能</h2>
 1.切换界面继续播放</br>
 2.进入后台暂停播放，回到前台继续播放</br>
-<hr width=90% size=3 color=bule alingn=left  /></br>
-<h2>How to use?</h2></br>
+<h2>How to use?</h2>
 ```Objective-c
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     CCPaomaView *ccView = [CCPaomaView shareManager];
