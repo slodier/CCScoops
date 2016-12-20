@@ -39,9 +39,6 @@
         self.hidden = YES;
         self.userInteractionEnabled = NO;
         [self layoutUI];
-        NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
-        _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
-        //NSLog(@"paomaArray ---------------- %@",[PaomaModel filename]);
     }
     return self;
 }
@@ -98,21 +95,15 @@
     NSString *backStr = [_defaults objectForKey:@"isBack"];
     if ([backStr intValue] == 0) {
         if ([self.paomaLabel.layer animationForKey:@"paoMaDeng"] == anim) {
-            NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
-            _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
-            [CCPaomaModel removePaomaPlist];
-            [_array writeToFile:[CCPaomaModel filename] atomically:YES];
+
             //动画停止之后，将实例置为 nil
             _pmAniamtion = nil;
             
-            //移除整个 plist
-            [CCPaomaModel removePaomaPlist];
-            
-            //重新写入
-            [_array writeToFile:[CCPaomaModel filename] atomically:YES];
-            
-            //动画停止之后，将实例置为 nil
-            _pmAniamtion = nil;
+            CCPaomaModel *model = [[CCPaomaModel alloc]init];
+            //删除第一个数据
+            [model deleteRow:_array[0]];
+            //重新再取一次数据(一个)
+            _array = [model selectTable];
             
             //数组为空之后移除跑马灯
             if (_array.count > 0) {
@@ -130,26 +121,21 @@
 
     //判断是否处于隐藏状态
     if (self.hidden == YES) {
-        //用字典接收 plist 的数据
-        NSDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:[CCPaomaModel filename]];
-        //转为数组
-        _array = [[NSMutableArray alloc]initWithObjects:dict, nil];
+        CCPaomaModel *ccPaomaModel = [[CCPaomaModel alloc]init];
+        _array = [ccPaomaModel selectTable];
     }
-    
     if (_array.count > 0) {
         //名字
-        NSString *username = [NSString stringWithFormat:@"%@",_array[0][@"username"]];
+        NSString *username = [NSString stringWithFormat:@"%@",_array[1]];
         //循环次数
-        NSString *animationAount = [NSString stringWithFormat:@"%@",_array[0][@"count"]];
+        NSString *animationAount = [NSString stringWithFormat:@"%@",_array[2]];
         //商品名
-        NSString *goodName = [NSString stringWithFormat:@"%@",_array[0][@"goodName"]];
+        NSString *goodName = [NSString stringWithFormat:@"%@",_array[3]];
         _paomaLabel.text   = [NSString stringWithFormat:@"%@购买了%@",username,goodName];
+        
         [view addSubview:self];
-        
         [self paomaAniamtion:[animationAount intValue]];
-        
         self.hidden = NO;
-
     }else{
         self.hidden = YES;
     }

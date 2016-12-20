@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CCPaomaView.h"
+#import "CCPaomaModel.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,11 @@
     // Override point for customization after application launch.
     _defaults = [NSUserDefaults standardUserDefaults];
     [_defaults setObject:@"0" forKey:@"isBack"];
+    
+    //删除数据库
+    CCPaomaModel *ccPaomaModel = [[CCPaomaModel alloc]init];
+    [ccPaomaModel removeSqlite];
+    
     return YES;
 }
 

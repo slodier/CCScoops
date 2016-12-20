@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) CCPaomaView *paomaView;
 
+@property (nonatomic, strong) CCPaomaModel *ccPaomaModel;
+
 @property (nonatomic, strong) UIButton *jumpBtn;
 @property (nonatomic, strong) UIButton *addDataBtn;
 
@@ -31,6 +33,8 @@
     _paomaView = [CCPaomaView shareManager];
     _paomaView.aniTime = 5;
     
+    _ccPaomaModel = [[CCPaomaModel alloc]init];
+    
     [self.view addSubview:self.jumpBtn];
     [self.view addSubview:self.addDataBtn];
     
@@ -41,8 +45,12 @@
 - (void)test {
     NSDictionary *dict = @{@"username":@"小明",
                            @"count":@"3",
-                           @"goodName":@"一汽大众CC"};
-    [dict writeToFile:[CCPaomaModel filename] atomically:YES];
+                           @"prize_name":@"一汽大众CC"};
+    /** 数据插入数据库 **/
+    [_ccPaomaModel insert:dict];
+    if (self.paomaView.hidden == YES) {
+        [_paomaView showPaomaView:self.view];
+    }
 }
 
 #pragma mark -- 按钮
@@ -50,8 +58,9 @@
 - (void)addData {
     NSDictionary *dict = @{@"username":@"金三胖",
                            @"count":@"3",
-                           @"goodName":@"日韩.avi"};
-    [dict writeToFile:[CCPaomaModel filename] atomically:YES];
+                           @"prize_name":@"日韩.avi"};
+    /** 数据插入数据库 **/
+    [_ccPaomaModel insert:dict];
     if (self.paomaView.hidden == YES) {
         [_paomaView showPaomaView:self.view];
     }
@@ -76,7 +85,7 @@
 #pragma mark -- getter
 - (UIButton *)addDataBtn {
     if (!_addDataBtn) {
-        _addDataBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.25 *KScreenWidth, (KScreenHeight - 0.1 *KScreenWidth)/2, 0.1 *KScreenWidth, 0.1 *KScreenWidth)];
+        _addDataBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.25 *KScreenWidth, (KScreenHeight - 0.1 *KScreenWidth)/2, 0.15 *KScreenWidth, 0.1 *KScreenWidth)];
         _addDataBtn.backgroundColor = [UIColor greenColor];
         [_addDataBtn setTitle:@"添加数据" forState:UIControlStateNormal];
         [_addDataBtn addTarget:self action:@selector(addData) forControlEvents:UIControlEventTouchUpInside];
@@ -86,7 +95,7 @@
 
 - (UIButton *)jumpBtn {
     if (!_jumpBtn) {
-        _jumpBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.45 *KScreenWidth, (KScreenHeight - 0.1 *KScreenWidth)/2, 0.1 *KScreenWidth, 0.1 *KScreenWidth)];
+        _jumpBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.45 *KScreenWidth, (KScreenHeight - 0.1 *KScreenWidth)/2, 0.15 *KScreenWidth, 0.1 *KScreenWidth)];
         _jumpBtn.backgroundColor = [UIColor greenColor];
         [_jumpBtn setTitle:@"去下级界面" forState:UIControlStateNormal];
         [_jumpBtn addTarget:self action:@selector(jumpClick) forControlEvents:UIControlEventTouchUpInside];

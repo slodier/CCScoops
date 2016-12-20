@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4293B7061E08F9850056D4C7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4293B7051E08F9850056D4C7 /* libsqlite3.dylib */; };
+		4293B7151E08F9B50056D4C7 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4293B70A1E08F9B50056D4C7 /* FMDatabase.m */; };
+		4293B7161E08F9B50056D4C7 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4293B70C1E08F9B50056D4C7 /* FMDatabaseAdditions.m */; };
+		4293B7171E08F9B50056D4C7 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4293B70E1E08F9B50056D4C7 /* FMDatabasePool.m */; };
+		4293B7181E08F9B50056D4C7 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4293B7101E08F9B50056D4C7 /* FMDatabaseQueue.m */; };
+		4293B7191E08F9B50056D4C7 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4293B7131E08F9B50056D4C7 /* FMResultSet.m */; };
+		4293B71A1E08F9B50056D4C7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4293B7141E08F9B50056D4C7 /* Info.plist */; };
 		42F30E131DB637100075474C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F30E121DB637100075474C /* main.m */; };
 		42F30E161DB637110075474C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F30E151DB637110075474C /* AppDelegate.m */; };
 		42F30E1C1DB637110075474C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F30E1A1DB637110075474C /* Main.storyboard */; };
@@ -40,6 +47,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4293B7051E08F9850056D4C7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		4293B7091E08F9B50056D4C7 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		4293B70A1E08F9B50056D4C7 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		4293B70B1E08F9B50056D4C7 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		4293B70C1E08F9B50056D4C7 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		4293B70D1E08F9B50056D4C7 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		4293B70E1E08F9B50056D4C7 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		4293B70F1E08F9B50056D4C7 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		4293B7101E08F9B50056D4C7 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		4293B7111E08F9B50056D4C7 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		4293B7121E08F9B50056D4C7 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		4293B7131E08F9B50056D4C7 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		4293B7141E08F9B50056D4C7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42F30E0E1DB637100075474C /* 跑马灯.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "跑马灯.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F30E121DB637100075474C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42F30E141DB637110075474C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4293B7061E08F9850056D4C7 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +112,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4293B7041E08F9840056D4C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4293B7051E08F9850056D4C7 /* libsqlite3.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4293B7071E08F99A0056D4C7 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4293B7081E08F9B50056D4C7 /* FMDB */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		4293B7081E08F9B50056D4C7 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				4293B7091E08F9B50056D4C7 /* FMDatabase.h */,
+				4293B70A1E08F9B50056D4C7 /* FMDatabase.m */,
+				4293B70B1E08F9B50056D4C7 /* FMDatabaseAdditions.h */,
+				4293B70C1E08F9B50056D4C7 /* FMDatabaseAdditions.m */,
+				4293B70D1E08F9B50056D4C7 /* FMDatabasePool.h */,
+				4293B70E1E08F9B50056D4C7 /* FMDatabasePool.m */,
+				4293B70F1E08F9B50056D4C7 /* FMDatabaseQueue.h */,
+				4293B7101E08F9B50056D4C7 /* FMDatabaseQueue.m */,
+				4293B7111E08F9B50056D4C7 /* FMDB.h */,
+				4293B7121E08F9B50056D4C7 /* FMResultSet.h */,
+				4293B7131E08F9B50056D4C7 /* FMResultSet.m */,
+				4293B7141E08F9B50056D4C7 /* Info.plist */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		42F30E051DB637100075474C = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +154,7 @@
 				42F30E2A1DB637120075474C /* 跑马灯Tests */,
 				42F30E351DB637120075474C /* 跑马灯UITests */,
 				42F30E0F1DB637100075474C /* Products */,
+				4293B7041E08F9840056D4C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +174,7 @@
 				42F30E511DB645640075474C /* Model */,
 				42F30E4D1DB6455D0075474C /* View */,
 				42F30E491DB645540075474C /* Controller */,
+				4293B7071E08F99A0056D4C7 /* Library */,
 				42F30E141DB637110075474C /* AppDelegate.h */,
 				42F30E151DB637110075474C /* AppDelegate.m */,
 				42F30E5A1DB716AD0075474C /* 返回.png */,
@@ -247,7 +305,7 @@
 		42F30E061DB637100075474C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CC;
 				TargetAttributes = {
 					42F30E0D1DB637100075474C = {
@@ -293,6 +351,7 @@
 			files = (
 				42F30E211DB637120075474C /* LaunchScreen.storyboard in Resources */,
 				42F30E561DB6461D0075474C /* 跑马底图.png in Resources */,
+				4293B71A1E08F9B50056D4C7 /* Info.plist in Resources */,
 				42F30E5B1DB716AD0075474C /* 返回.png in Resources */,
 				42F30E1E1DB637120075474C /* Assets.xcassets in Resources */,
 				42F30E1C1DB637110075474C /* Main.storyboard in Resources */,
@@ -323,9 +382,14 @@
 				42F30E161DB637110075474C /* AppDelegate.m in Sources */,
 				42F30E591DB715B50075474C /* ChildVC.m in Sources */,
 				42F30E541DB6458C0075474C /* CCPaomaModel.m in Sources */,
+				4293B7151E08F9B50056D4C7 /* FMDatabase.m in Sources */,
+				4293B7171E08F9B50056D4C7 /* FMDatabasePool.m in Sources */,
+				4293B7181E08F9B50056D4C7 /* FMDatabaseQueue.m in Sources */,
 				42F30E4C1DB645540075474C /* ViewController.m in Sources */,
 				42F30E501DB6455D0075474C /* CCPaomaView.m in Sources */,
+				4293B7191E08F9B50056D4C7 /* FMResultSet.m in Sources */,
 				42F30E131DB637100075474C /* main.m in Sources */,
+				4293B7161E08F9B50056D4C7 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +462,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -446,6 +511,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

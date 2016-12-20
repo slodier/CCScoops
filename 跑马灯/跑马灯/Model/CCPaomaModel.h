@@ -7,13 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMDB.h"
 
 @interface CCPaomaModel : NSObject
 
-//跑马 plist 的路径
-+ (NSString *)filename;
+#pragma mark -- 查询数据库
+- (NSMutableArray *)selectTable;
 
-//删掉跑马 plist
-+ (void)removePaomaPlist;
+#pragma mark -- 插入进表
+- (void)insert:(NSDictionary *)dict;
+
+#pragma mark -- 删除某行
+- (void)deleteRow:(NSString *)rowId;
+
+#pragma mark - 删除数据库
+- (void)removeSqlite;
 
 @end
