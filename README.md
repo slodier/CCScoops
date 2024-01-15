@@ -1,35 +1,35 @@
 # CCScoops
-## 更新日志
+## Change log
 
-1月5号: 后台回到前台,无限播放的 `bug`<br>
-12月21号: 使用 `FMDB` 更换 `plist`<br>
+January 5th: Backstage returns to frontstage, unlimited playback `bug`<br>
+December 21: Use `FMDB` replace `plist`<br>
 
-## 实现思路
-1.创建一个单例 Label</br>
-2.把接收的数据存在本地的 `sqlite`,每次取一个数据,动画执行完删除当前数据,再取下一条数据</br>
-3.根据动画代理，监听动画执行结束，将动画实例置为 `nil`</br>
-4.判断动画实例是否为空，使得切换界面，跑马灯继续，而不是重新开始</br>
-5.切换界面，暂停、恢复动画</br>
-6.回到前台重新添加动画，因为动画已经改变</br>
-## 功能
-1.切换界面继续播放</br>
-2.进入后台暂停播放，回到前台继续播放</br>
+## Implementation ideas
+1.Create a singleton Label</br>
+2.Store received data locally `sqlite`,Each time one piece of data is fetched, the current data is deleted after the animation is executed, and then the next piece of data is fetched.</br>
+3.According to the animation agent, monitor the end of animation execution and set the animation instance to `nil`</br>
+4.Determine whether the animation instance is empty, so that switching interfaces and tickers continue instead of starting again</br>
+5.Switch interfaces, pause and resume animations</br>
+6.Go back to the foreground and re-add the animation because the animation has changed</br>
+## Function
+1.Switch interface to continue playing</br>
+2.Enter the background to pause playback, return to the foreground to continue playback</br>
 ## How to use?
 
-## 添加数据
+## adding data
 
  ```obj-c
-    NSDictionary *dict = @{@"username":@"金三胖",
+    NSDictionary *dict = @{@"username":@"Jin Sanpang",
                            @"count":@"3",
-                           @"prize_name":@"日韩.avi"};
-    /** 数据插入数据库 **/
+                           @"prize_name":@"Japan.avi"};
+    /** Insert data into database **/
     [_ccPaomaModel insert:dict];
     if (self.paomaView.hidden == YES) {
         [_paomaView showPaomaView:self.view];
     }
 ```
 
-<h3>切换界面、前后台操作</h3>
+<h3>Switch interface, front and back operations</h3>
 
 ```obj-c
 - (void)applicationDidEnterBackground:(UIApplication *)application {
